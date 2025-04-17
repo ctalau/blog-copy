@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_lyw_nns_qv">
+  <title>DITA Open Toolkit Frequently Asked Questions (FAQ)</title>
+  <prolog>
+    <author>Radu Coravu</author>
+  </prolog>
+  <body>
+    <p>I tried to put together below a set of frequently asked questions and useful links about the
+        <b>DITA Open Toolkit</b>. </p>
+    <section id="section_pgy_sns_qv">
+      <title>What is the DITA Open Toolkit?</title>
+      <p>The <b>DITA Open Toolkit</b> is a publishing tool used to convert <b>DITA</b> content into
+        various output formats. It's official web site, containing download links and documentation
+        can be found here: <xref href="http://www.dita-ot.org/" format="html" scope="external"
+        />.</p>
+    </section>
+    <section id="section_rcl_24s_qv">
+      <title>How do I use the DITA Open Toolkit?</title>
+      <p>You can <xref href="http://www.dita-ot.org/download" format="html" scope="external"
+          >download</xref>, <xref
+          href="http://www.dita-ot.org/dev/getting-started/installing-client.html" format="html"
+          scope="external">install</xref> and <xref
+            href="https://www.dita-ot.org/dev/topics/first-build-using-dita-command.html#ariaid-title1"
+          format="html" scope="external">build output</xref> from <b>DITA</b> content using the
+        command line.</p>
+      <p>Besides this, there are applications which come with the <b>DITA Open Toolkit</b> bundled.
+        For example <ph keyref="oxygen"/> comes bundled usually with the latest bundled <b>DITA Open
+          Toolkit</b>. Oxygen provides visual means to run the bundled DITA Open Toolkit using a
+        concept called <xref
+          href="https://www.oxygenxml.com/doc/ug-editor/topics/create-dita-ot-transformation.html"
+          format="html" scope="external">transformation scenarios</xref>.</p>
+    </section>
+    <section id="section_i3f_jps_qv">
+      <title>What version of DITA Open Toolkit should I use?</title>
+      <p>You should try to use the latest DITA Open Toolkit release available on the official <xref
+          href="http://www.dita-ot.org/download" format="html" scope="external">download</xref>
+        page. </p>
+    </section>
+    <section id="section_f4p_dqs_qv">
+      <title>What outputs can I obtain using the DITA Open Toolkit?</title>
+      <p>The entire set of default available output formats is available here: <xref
+        href="https://www.dita-ot.org/dev/topics/output-formats.html" format="html"
+          scope="external"/>. But the <b>DITA Open Toolkit</b> can be enhanced by installing plugins
+        to provide additional output formats.</p>
+    </section>
+    <section id="section_e2q_3rs_qv">
+      <title>What is the general architecture of the DITA Open Toolkit?</title>
+      <p>The <b>DITA Open Toolkit</b> is a quite large mixture of <xref
+          href="http://ant.apache.org/" format="html" scope="external">ANT</xref> build scripts,
+        Java libraries and <xref href="https://www.w3.org/TR/2007/REC-xslt20-20070123/"
+          format="html" scope="external">XSLT scripts</xref>. It has a <xref
+            href="https://www.dita-ot.org/dev/reference/architecture.html" format="html"
+          scope="external">pipeline-based architecture</xref> which uses plugins to publish DITA
+        content to various output formats. Most of the DITA Open Toolkit customizations that you
+        want to make in order to add new publishing capabilities or to customize existing publishing
+        choices can be made without modifying its internal core.</p>
+    </section>
+    <section id="section_jrd_kts_qv">
+      <title>What is a DITA Open Toolkit plugin?</title>
+      <p>A <b>DITA Open Toolkit</b> plugin can either provide a <xref
+        href="https://www.dita-ot.org/dev/topics/plugin-newtranstype.html" format="html"
+          scope="external">new publishing format</xref>, <xref
+            href="https://www.dita-ot.org/dev/topics/plugin-applications.html" format="html"
+          scope="external">customize an existing publishing stage</xref> or provide a <b>DITA</b>
+        <xref href="https://www.dita-ot.org/dev/topics/plugin-xmlcatalog.html" format="html"
+          scope="external">specialization vocabulary</xref>. The plugin can use one of the numerous
+        extension points available in the <b>DITA Open Toolkit</b>: <xref
+          href="https://www.dita-ot.org/dev/extension-points/plugin-extension-points.html" format="html"
+          scope="external"/>.</p>
+      <p>Once you have <xref
+          href="https://www.dita-ot.org/dev/topics/plugin-newtranstype.html#ariaid-title1"
+          format="html" scope="external">created</xref> a plugin you can install it in the <b>DITA
+          Open Toolkit</b> either by <xref
+          href="https://www.oxygenxml.com/doc/ug-editor/topics/dita-ot-install-plugin.html"
+          format="html" scope="external">manual installation</xref> or using the new <xref
+          href="https://www.dita-ot.org/dev/topics/plugins-installing.html" format="html"
+          scope="external">automated installation procedure</xref>.</p>
+    </section>
+    <section id="section_p33_l5s_qv">
+      <title>How do I customize the HTML-based outputs?</title>
+      <p>There are a number of parameters which can be set to customize the HTML-based outputs:<xref
+          href="http://www.dita-ot.org/dev/parameters/parameters-base-html.html" format="html"
+          scope="external"/>. For example you can specify your own <b>CSS</b> stylesheet to be used
+        with  the generated HTML output.</p>
+      <p>You can also create a plugin to customize the HTML outputs by adding a custom XSLT
+        stylesheet: <xref
+          href="creating-simple-dita-open-toolkit.dita"/>.</p>
+    </section>
+    <section id="section_tcx_v5s_qv">
+      <title>How do I customize the PDF output?</title>
+      <p>Oxygen comes bundled with a DITA Open Toolkit plugin which uses CSS to style the DITA
+        content and produce PDF: <xref
+          href="https://www.oxygenxml.com/doc/ug-editor/topics/pdf-css-customization.html"
+          format="html" scope="external"/>. This plugin is free to use from inside Oxygen but is
+        part of a commercial product if you want to automate the publishing on the server side. This
+        is our recommended plugin for publishing DITA to PDF.</p>
+      <p>In addition the DITA Open Toolkit comes bundled with a free PDF generation plugin which
+        uses XSL-FO. The PDF output is obtained by passing the original <b>DITA</b> content to
+          <b>XSL-FO</b> and then generating <b>PDF</b> using an <b>XSL-FO</b> processor. The default
+        bundled and used XSL-FO processor is the <xref href="https://xmlgraphics.apache.org/fop/"
+          format="html" scope="external">Apache FOP</xref> but you can also install separately and
+        use commercial PDF processors like <xref href="https://www.antennahouse.com/" format="html"
+          scope="external">Antenna House</xref> or <xref href="http://www.renderx.com/"
+          format="html" scope="external">RenderX XEP</xref>.</p>
+      <p>You can customize the <b>PDF</b> output either using a <xref
+          href="https://www.oxygenxml.com/doc/ug-editor/#topics/dita_pdf_output_customization.html"
+          format="html" scope="external">PDF customization folder</xref> or by creating a <xref
+          href="creating-simple-dita-open-toolkit.dita">PDF customization plugin</xref>.</p>
+      <p>There are a number of other solutions for obtaining <b>PDF</b> from <b>DITA</b>: <xref
+        href="ditaToPDF.dita"/>.</p>
+    </section>
+  </body>
+</topic>

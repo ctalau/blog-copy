@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_hkx_gzc_cs">
+  <title>Schematron Checks to help Technical Writing</title>
+  <prolog>
+    <author>Radu Coravu</author>
+  </prolog>
+  <body>
+  <p>The <ph keyref="oxygen"/> User's Manual is written in DITA. In an older post I described <xref
+        href="collaboration-for-documenting-software.dita">in more detail </xref> how we collaborate internally on our
+      User's Guide Project. And we also made available a copy of our User's Manual as a <xref
+        href="https://github.com/oxygenxml/userguide" format="html" scope="external">project on
+        GitHub</xref>.</p>
+  <p>During these years on working on it, we progressively developed a set of simple rules which
+      were originally kept in a plain text document. The problem is that nobody can really remember
+      all these rules when actually writing. So recently we started to migrate these rules to
+      Schematron and have them reported automatically has validation warnings and errors while
+      editing the topics. And we can also add <xref
+      href="https://www.oxygenxml.com/doc/ug-oxygen/#topics/schematron-quick-fixes.html"
+      format="html" scope="external">quick fixes</xref> for each of these problems.</p>
+  <p>So below I will try to tell you what each rule imposes and what it's Schematron implementation
+   looks like. If you want to quickly test these rules on your side, you can add them to the
+   Schematron file which is used by default to validate DITA topics located in:
+    <filepath>OXYGEN_INSTALL_DIR/frameworks/dita/resources/dita-1.2-for-xslt2-mandatory.sch</filepath>.</p>
+  <ol id="ol_zkg_vfj_cs">
+   <li>Try as much as possible to add at least an <keyword>indexterm</keyword> element in each
+        topic. This is useful when the <b>Index</b> page is created for the PDF output or the
+          <b>Index</b> tab is created for the WebHelp output. As this is not a requirement, we
+        wanted to report this issue as an error. The end result looks like this:<image
+          href="../images/image1.png"
+          placement="break" id="image_y11_ckj_cs"/> And the Schematron pattern looks like
+        this:<codeblock outputclass="language-xml">&lt;pattern xmlns:sqf="http://www.schematron-quickfix.com/validator/process">
+ &lt;rule context="/*">
+  &lt;assert test="prolog/metadata/keywords/indexterm" role="warn" sqf:fix="addFragment">
+      It is recommended to add an 'indexterm' in the current '&lt;name/>' element.
+  &lt;/assert>
+  &lt;!-- Quick fix to add the indexterm element element and its parents -->
+  &lt;sqf:fix id="addFragment">
+      &lt;sqf:description>
+          &lt;sqf:title>Add the 'indexterm' element&lt;/sqf:title>
+      &lt;/sqf:description>      
+      &lt;sqf:add match="(title | titlealts | abstract | shortdesc)[last()]" position="after" use-when="not(prolog)">
+          &lt;xsl:text>
+    &lt;/xsl:text>&lt;prolog xmlns="">&lt;xsl:text>
+      &lt;/xsl:text>&lt;metadata>&lt;xsl:text>
+        &lt;/xsl:text>&lt;keywords>&lt;xsl:text>
+           &lt;/xsl:text>&lt;indexterm>&lt;xsl:text> &lt;/xsl:text> &lt;/indexterm>&lt;xsl:text>
+        &lt;/xsl:text>&lt;/keywords>&lt;xsl:text>
+      &lt;/xsl:text>&lt;/metadata>&lt;xsl:text>
+    &lt;/xsl:text>&lt;/prolog>
+      &lt;/sqf:add>
+  &lt;/sqf:fix>
+ &lt;/rule>
+&lt;/pattern></codeblock></li>
+   <li>The ID of each topic must be equal to the file name (minus the extension). One of the outputs
+        we produce (I think CHM) had a limitation when building the context mapping between help IDs
+        and actual HTML content so this was an important rule for us, thus an error is reported on
+        this. Also a quick fix is added to auto-correct the topic ID based on the file name. The end
+        result looks like this: <image
+          href="../images/image2.png"
+          placement="break" id="image_jms_lkj_cs"/>and the Schematron pattern
+        is:<codeblock outputclass="language-xml">&lt;!-- Topic ID must be equal to file name -->
+&lt;sch:pattern>
+ &lt;sch:rule context="/*[1][contains(@class, ' topic/topic ')]">
+  &lt;sch:let name="reqId" value="replace(tokenize(document-uri(/), '/')[last()], '.dita', '')"/>
+  &lt;sch:assert test="@id = $reqId" sqf:fix="setId">
+   Topic ID must be equal to file name.
+  &lt;/sch:assert>
+  &lt;sqf:fix id="setId">
+   &lt;sqf:description>
+    &lt;sqf:title>Set "&lt;sch:value-of select="$reqId"/>" as a topic ID&lt;/sqf:title>
+    &lt;sqf:p>The topic ID must be equal to the file name.&lt;/sqf:p>
+   &lt;/sqf:description>
+   &lt;sqf:replace match="@id" node-type="attribute" target="id" select="$reqId"/>
+  &lt;/sqf:fix>
+ &lt;/sch:rule>
+&lt;/sch:pattern></codeblock></li>
+   <li>Report when plain links or related links to web resources have the same text inside them as
+        the value of the <b>@href</b> attribute. We had cases in which writers would input web links
+        like
+        this:<codeblock outputclass="language-xml">&lt;xref href="http://www.google.com" format="html" scope="external">http://www.google.com&lt;/xref></codeblock>which
+        is redundant because when you set no text to the link, the publishing uses the<b> @href</b>
+        attribute value as the link text. So we wanted to report such cases as warnings and to have
+        a quick fix which removes the link text:<image
+          href="../images/image3.png"
+          placement="break" id="image_kcb_5kj_cs"/>The Schematron pattern looks like
+        this:<codeblock outputclass="language-xml">&lt;sch:pattern>
+ &lt;sch:rule context="*[contains(@class, ' topic/xref ') or contains(@class, ' topic/link ')]">
+  &lt;sch:report test="@scope='external' and @href=text()" sqf:fix="removeText">
+   Link text is same as @href attribute value. Please remove.
+  &lt;/sch:report>
+  &lt;sqf:fix id="removeText">
+   &lt;sqf:description>
+    &lt;sqf:title>Remove redundant link text, text is same as @href value.&lt;/sqf:title>
+   &lt;/sqf:description>
+   &lt;sqf:delete match="text()"/>
+  &lt;/sqf:fix>
+ &lt;/sch:rule>
+&lt;/sch:pattern></codeblock></li>
+   <li>Avoid using the <b>@scale</b> attribute on images. We wanted to smooth scale images in an
+    external image editor so it was prohibited to use the <b>@scale</b> attribute on images. The
+    Schematron pattern for
+    this:<codeblock outputclass="language-xml">&lt;pattern>
+ &lt;rule context="*[contains(@class, ' topic/image ')]">
+  &lt;assert test="not(@scale)">
+   Dynamically scaled images are not properly displayed, you
+   should scale the image with an image tool and keep it within
+   the recommended with and height limits.
+  &lt;/assert>
+ &lt;/rule>
+&lt;/pattern></codeblock></li>
+  </ol>
+  <p>We have an upcoming event dedicated to <xref
+        href="https://www.oxygenxml.com/events/2015/webinar_oxygen_17_xml_quick_fixes.html"
+        format="html" scope="external">Schematron Quick Fixes</xref> if you want to become more
+      familiar with the technology. And we also have a <xref href="https://github.com/oxygenxml/dim"
+        format="html" scope="external">GitHub project</xref> which tries to combine the notion of a
+      style guide for writing documentation inside a company with a very simple manner of defining
+      checks which can be applied to impose the styleguide rules. </p>
+    <p>I would be interested in your feedback, especially if you have checks that you perform right
+      now on your content and you consider that they might benefit others.</p>
+  </body>
+</topic>

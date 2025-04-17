@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_sz1_ssy_ct">
+  <title>DITA 1.3 Key Scopes - Next Generation of Reuse</title><prolog><author>Radu Coravu</author>
+    <metadata>
+      <keywords>
+        <keyword outputclass="label">DITA 1.3</keyword>
+      </keywords>
+    </metadata></prolog>
+  <body>
+    <p>In this blog post I'm going to give you a small example of how key scopes can benefit simple
+      cases of reuse which could not be done previously.</p>
+    <p>Let's say you have a simple <b>DITA</b> task in which you have described how a certain task
+      can be performed for a certain product. In our case, the task describes peeling a
+        <b>potato</b>:</p>
+    <image 
+      href="image1.png"/>
+    <p>The task works and at some point in your <b>Vegetables Soup</b> publication you realise you
+      need to write a similar task about peeling <b>cucumbers</b>. The task is exactly the same,
+      except the product name. So naturally you want to reuse the existing written task. For this we
+      re-write the task so that instead of the product <b>potatoes</b> it contains a key
+      reference:<codeblock outputclass="language-xml">&lt;ph keyref="vegetable"/></codeblock></p>
+    <p>Next we need to define in our DITA Map the <b>vegetable</b> key and bind it to a specific
+      value in the potatoes
+      context:<codeblock outputclass="language-xml"> &lt;topicref href="potatoes_overview.dita" keyscope="potatoes">
+  &lt;!-- Define the vegetable key value in this key scope -->
+  &lt;keydef keys="vegetable">
+   &lt;topicmeta>
+    &lt;keywords>
+     &lt;keyword>potatoes&lt;/keyword>
+    &lt;/keywords>
+   &lt;/topicmeta>
+  &lt;/keydef>
+  &lt;!-- Reference to the common task -->
+  &lt;topicref href="peeling.dita"/>
+ &lt;/topicref></codeblock>and
+      add in our DITA Map another key scope with the overview and the task which deal with
+        <b>cucumbers</b>
+      peeling:<codeblock outputclass="language-xml"> &lt;topicref href="cucumbers_overview.dita" keyscope="cucumbers">
+  &lt;!-- Define the vegetable key value in this key scope -->
+  &lt;keydef keys="vegetable">
+   &lt;topicmeta>
+    &lt;keywords>
+     &lt;keyword>cucumbers&lt;/keyword>
+    &lt;/keywords>
+   &lt;/topicmeta>
+  &lt;/keydef>
+  &lt;!-- Reference to the common task -->
+  &lt;topicref href="peeling.dita"/>
+ &lt;/topicref></codeblock></p>
+    <p>As you may have noticed, we have not used the key scope names for anything. Just by defining
+      the key scopes, we made the product name to be expanded differently in both contexts. But our
+        <b>Vegetables Soup</b> publication may also contain a topic which lists all possible
+      vegetables. This topic is defined in a context outside any key
+      scope:<codeblock outputclass="language-xml">&lt;topicref href="vegetables_over.dita"/></codeblock>and
+      this overview topic can refer to each product name using the full keyscope key reference
+      value:<codeblock outputclass="language-xml">&lt;!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+&lt;topic id="vegetables_over">
+  &lt;title>Vegetables Overview&lt;/title>
+  &lt;body>
+    &lt;p>This is an overview of all vegetables necessary to make soup. You will learn how to use
+      vegetables like &lt;ph keyref="potatoes.vegetable"/> and &lt;ph keyref="cucumbers.vegetable"/> to
+      make a great starter soup.&lt;/p>
+  &lt;/body>
+&lt;/topic></codeblock></p>
+    <p>As stated before, this kind of reuse was not possible using the standard DITA 1.2 standard
+      constructs. As it turns out, with DITA 1.3 we can also implement this kind of reuse using
+      branch filtering. The DITA samples for this post can be downloaded from <xref
+        href="https://www.oxygenxml.com/forum/files/keyscopesBlogSamples.zip" format="zip"
+        scope="external"/>.</p>
+    <p>As usual any feedback is welcomed.</p>
+  </body>
+</topic>

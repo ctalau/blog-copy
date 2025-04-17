@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="conref_push">
+  <title>Pushing Content</title>
+  <prolog>
+    <author>Radu Coravu</author>
+  </prolog>
+  <body>
+    <p>Besides the techniques we've seen so far for pulling reused content in multiple places you
+      can also push content to a certain specified place inside an existing topic.</p>
+    <p>So why push content? </p>
+    <p>Imagine you have an existing publication "Cooking Book" containing a task with a couple of
+      steps for peeling vegetables. At some point you create the DITA Map for a larger publication
+      called "Cooking Book for Pros" which reuses the entire original publication by referencing to
+      the original publication DITA Map. But you somehow need to add extra steps in the original
+      task when the larger publication gets printed.</p>
+    <image
+      href="images/image16.png"
+      height="400" id="image_jzc_fnz_15"/>
+    <example>
+      <title>Pushing Content to an existing sequence of steps</title>
+      <p>Sequence of steps from the original task:</p>
+      <codeblock outputclass="language-xml">     &lt;steps>
+      ...........
+      &lt;step id="peeler_handling">
+        &lt;cmd>Pass the peeler gently over the vegetable.&lt;/cmd>
+      &lt;/step>
+    &lt;/steps></codeblock>
+      <p>Key definition in DITA Map for the task which will push the content:</p>
+      <codeblock outputclass="language-xml">&lt;keydef href="stepsPusher.dita" keys=”peeling”/></codeblock>
+      <p>Content key reference push done from the <filepath>"stepsPusher.dita"</filepath> task:</p>
+      <codeblock outputclass="language-xml">        &lt;steps>
+            &lt;step conaction="mark" conkeyref="peeling/peeler_handling">
+                &lt;cmd/>
+            &lt;/step>
+            &lt;step conaction="pushafter">
+                &lt;cmd>Read the instructions.&lt;/cmd>
+            &lt;/step>
+        &lt;/steps></codeblock>
+      <p>So the only purpose of the <filepath>"stepsPusher.dita"</filepath> task which is referenced
+        with a <b>resource-only</b> processing role and thus does not appear at all in the output is
+        to modify the content of the original task which gets published.</p>
+    </example>
+    <p>How do we push content in Oxygen? First you would need to define an ID on an element which
+      will be the target for our push. The conref push mechanism allows us either to replace, insert
+      an element before or after this target element. After this you can create the topic which
+      pushes the content, create the step which will be pushed. You can right click inside this
+      steps and choose <b>Reuse->Push Current Element...</b>.</p>
+  </body>
+</topic>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="editing_session_workflow">
+    <title>Typical Editing Session</title>
+	<prolog>
+		<author>Radu Coravu</author>
+	</prolog>
+    <body>
+		<p>Usually, an editing session has the following stages that are repeated throughout the day:</p>
+		<p>
+			<image placement="break"
+				href="../images/editing-session-stages.png"
+				id="image_cgt_m3k_swb"/>
+			<!--https://mermaid.live/edit#pako:eNptkbFOwzAQhl_FurlBNOmUgYEUNiQEnYgZLPvSWMS-yDkLVVXfHTslYaBe7O_06_P5fAZNBqGGbqBv3avA4rCXXqRlzX3b9Ki_KLJ4Q0eMaRtpskzhJB6D8rr_XLLb9slYFg15Rs9ruWxf4zAsZfEcyP13remqbci5G5pd0kz9qjnQTUnqWBR3xUNuJ9NWFDOUGcpfqDJUS24HG3AYnLImDeGc75PAPTqUUKejwU7FgSVIf0nROBrFmF9KAWoOETegItP7yeuFr5m9VcegHNSdGqZUHZX_IPpjnB0v1-HPf3D5ASPIhOI-->
+			<ul id="ul_mdp_whk_swb">
+				<li><b>Clone/Checkout Branch From Remote Repository</b> - Checkout a branch from the remote
+					repository on which you want to work. Usually done only once.<p><image
+							href="images/clone.png" id="image_ksg_jfr_swb" scale="30"/></p></li>
+				<li><b>Edit Content</b> - The project is edited and modified in the current working
+					copy.</li>
+				<li><b>Commit Content</b> - Commit the changes to the local working copy.</li>
+				<li><b>Pull Content From Remote Repository</b> - Obtain the latest content for the
+					edited project branch.</li>
+				<li><b>Push Content To Remote Repository</b> - From time to time, push the commits to the remote
+					repository so that others can use them as well. You must always pull content
+					from the repository before pushing to it, otherwise the pull will fail.</li>
+				<li><image href="images/pullBeforePush.png" id="image_odv_2fr_swb" scale="30"/></li>
+			</ul>
+		</p>
+		<section>
+			<title>Commit Message</title>
+			<p>Each commit has a commit message. The commit message is in general a brief
+				description of the changes. When using a ticketing system, as a best practice the
+				commit message contains the ID of the ticket.</p>
+			<image href="images/commit-message.png" placement="break" scale="50"/>
+		</section>
+		<section id="section_smb_jhr_nwb">
+			<title>Micro Commits</title>
+			<p>Commit often, whenever a small change in the documentation is beneficial and makes
+				sense by itself. Useful links: <xref
+					href="https://stackoverflow.blog/2022/12/19/use-git-tactically/" format="html"
+					scope="external"/><image placement="break" href="../images/micro-commits.png"
+					id="image_fww_cwq_nwb"
+				/><!--https://mermaid.live/edit#pako:eNptkE1qw0AMha8itHYu4HVCV93UdBNmI2ZkW9TzgywTl5C7d2wTurE2QuJ7T-I90efA2OIg9qFURpegls8xioGEFhx2hacJ_Mj-B3pZeXZ4Qt1WU_LGARI_YGZvktM5-sWXrIG1ssp97cnzDJIgUjkVfJdAm7NEGo7z2GBkjSSh_v7cJA5t5MgON0HgnpbJNvJV0WXX34JYVmxNF26QFsvdb_Lv-WCuQoNSxLanaa7bQume8__Mu8fnkdke3esPdtJtcA--></p>
+		</section>
+		<section id="section_lh1_5dr_swb">
+			<title>Handling Simple Conflicts</title>
+			<p>Conflicts are usually caused by trying to push changes made to resources that, in the
+				meantime, have been modified by others on the remote repository. Conflicts normally
+				occur when working with Git, they can be resolved and they are not a sign that
+				anyone did anything wrong.<ul id="ul_fnk_dgr_swb">
+					<li>If changes are made to text files on different lines, the conflicts are
+						automatically merged. </li>
+					<li>
+						<p>If the conflicting changes are on the same lines, you can resolve the
+							conflict.</p>
+						<p><image href="images/simpleConflict.png" id="image_dy3_ggr_swb" scale="40"
+							/></p>
+						<p>The conflict can be resolved by keeping your version, or the version of
+							the remote collaborator, or by manual merging:</p>
+						<p><image href="images/resolveConflict.png" id="image_gj2_4gr_swb"
+								scale="30"/></p>
+					</li>
+				</ul></p>
+		</section>
+        <p><!--https://mermaid.live/edit#pako:eNptkTFPwzAQhf-KdXODaNIpAwMpbEgIOhEzWPYFR8S-yDkLVVX_O3bahIF6sb_zu-en8wk0GYQauoF-tFWBxWEvvUirN_dtY1F_U2Txho4Y0zbS1DOFo3gMymv7uWi37WscBtGQZ_QsngO5_02rumyfTM-Lei1XbUPO3bjYJffJru4HuumdEovirnjIcTJtRTFDmaG8QpWhusIONuAwONWbNINTfk4CW3QooU5Hg52KA0uQ_pykcTSKMUenADWHiBtQken96PXCF82-V19BOag7NUypOir_QfTHOHu8XGY_f8H5F9HJhLQ--></p>
+    </body>
+</topic>

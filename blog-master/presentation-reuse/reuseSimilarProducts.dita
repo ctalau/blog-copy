@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="reuseSimilarProducts">
+  <title> Reuse content for similar products</title>
+  <prolog>
+    <author>Radu Coravu</author>
+  </prolog>
+  <body>
+    <image
+      href="images/image5.png"
+      height="300" id="image_dws_vmb_b5"/>
+    <p>This is the most common case for successful reuse, you have multiple similar products which
+      share common functionality. So similarly the technical documentation for each of those
+      products will also share common content. This is usually done in two ways. In the following
+      sections I will use the term <b>root map</b> for referring to the DITA Map which will actually
+      get published.</p>
+    <section id="section_ews_vmb_b5">
+      <title>1. Use multiple Root Maps.</title>
+      <image
+        href="images/image6.png"
+        height="200" id="image_fws_vmb_b5"/>
+      <p>Each root map is published to obtain the output for a certain product type. As major
+        benefits you can:<ul id="ul_gws_vmb_b5">
+          <li>Reuse entire topics. </li>
+          <li>Define variable product names. </li>
+          <li>Remap links and reused content using keys.</li>
+        </ul></p></section>
+    <example><title>Publication maps for phone models X1000 and X2000 using almost similar content
+        except Blue-tooth chapter which appears in only one of them.</title><image
+        href="images/image8.png"
+        height="300" id="image_hws_vmb_b5"/></example>
+    <section id="section_iws_vmb_b5"><title>2. Use a single Root Map.</title><image
+        href="images/image7.png"
+        height="200" id="image_jws_vmb_b5"/><p>You have a single publication root map which gets
+        published for various products using profiling filters applied on it. These filters can be
+        applied either at topic or element levels. The product name is variable and depends on the
+        applied filters.</p></section>
+  </body>
+	<related-links>
+		<link
+			href="https://www.oxygenxml.com/doc/ug-editor/topics/dita-profiling-conditional-text.html"
+			format="html" scope="external">
+			<linktext>DITA Profiling / Conditional Text</linktext>
+		</link>
+	</related-links>
+</topic>

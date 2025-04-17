@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="reuse_other">
+  <title>Reuse non-DITA resources</title>
+  <prolog>
+    <author>Radu Coravu</author>
+  </prolog>
+  <body>
+    <p>Besides DITA topics you can reuse other resources in your DITA project:<ul id="ul_xhl_nrm_d5">
+        <li>Reuse images either referenced directly or via a key reference. </li>
+        <li>Reuse other linked resources (like videos, PDFs and so on).</li>
+      </ul></p>
+    <p>As binary resources are not embedded in the DITA topics, they are naturally reused by being
+      kept in separate files and linked when necessary.</p>
+    <image
+        href="images/image9.png"
+        height="50" id="image_jzc_fnz_15"/>
+    <p>You can reuse images and link to other resources either via direct references or via indirect
+      key references. What to choose may depend on how many times you refer to a certain image or
+      binary resource. If you refer to it only once or twice you can use direct referencing.</p>
+    <p>If you have problems getting images to appear the same size when published to PDF and
+      XHTML-based outputs you should make sure they do not have the dots-per-inch information saved
+      inside them: <xref
+        href="https://www.oxygenxml.com/doc/ug-editor/topics/stretched-images-pdf-output.html"
+        format="html" scope="external"/>.</p>
+  </body>
+</topic>

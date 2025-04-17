@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="versionControl">
+  <title>Version Control and Reuse</title>
+  <prolog>
+    <author>Radu Coravu</author>
+  </prolog>
+  <body>
+    <image
+      href="images/image15.png"
+      id="image_inx_kmb_b5"/>
+    <p>Version Control allows you to reuse content tagged at a certain point in time in order to
+      produce older versions of your publications. So no matter what open source version control
+      system like SVN or GIT you are using or commercial CMS, you should always have the possibility
+      to produce older bug-fix versions for your documentation. So you can think of Version Control
+      as content reuse on the time line axis.</p>
+  </body>
+</topic>

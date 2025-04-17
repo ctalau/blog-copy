@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_z4r_21p_15">
+  <title>Possibilities to obtain PDF from DITA</title>
+  <prolog>
+    <author>Radu Coravu</author>
+  </prolog>
+  <body>
+    <p>Lately while attending Tekom 2015 and <xref
+        href="https://www.oxygenxml.com/events/2015/dita-ot_day.html" format="html" scope="external"
+        >DITA OT Day 2015</xref> I happened to come across two more DITA to PDF solutions that I did
+      not know about so I tried to compile below a list of all DITA to PDF possibilities that I know
+      of, along with some details:<ul id="ul_dzv_m1p_15">
+      <li><b>DITA Map PDF - based on HTML5 &amp; CSS</b>. This commercial plugin is developed and
+        maintainced by Oxygen as an alternative to the default PDF publishing. It allows styling the
+        DITA content using CSS and publishing to PDF using our own <b>Chemistry</b> engine or other
+        commercial solutions like <b>Prince XML</b> or <b>Antenna House</b>.</li>
+        <li>Default DITA to PDF solution embedded in the DITA Open Toolkit distribution. Besides
+          Apache FOP you can also use RenderX XEP or Antenna House for publishing. It's
+          customization can be done either via a plugin or via a PDF customization folder: <xref
+            href="https://www.oxygenxml.com/doc/ug-editor/index.html#topics/dita_pdf_output_customization.html"
+            format="html" scope="external"/>.</li>
+        <li>Antenna House <xref href="https://github.com/AntennaHouse/pdf5" format="html"
+            scope="external">DITA OT plugin</xref> for producing PDF from DITA using Antenna House.
+          There is also a <xref href="https://github.com/AntennaHouse/ah-dita" format="html"
+            scope="external">DITA specialization</xref> plugin which allows you to set specific
+          formatting attributes directly to DITA elements.</li>
+        <li>The <xref href="https://contiem.com/software/publishing-software/topleaf/" format="html"
+            scope="external">TopLeaf</xref> XML Publisher commercial product allows you to produce
+          various outputs like PDF and EPUB from XML content. The application also has a visual PDF
+          layout formatter, it comes also with a DITA OT plugin and has installation instructions
+          for Oxygen.</li>
+        <li><xref href="https://www.miramo.com/download/documentation/Miramo_DITA-OT_GettingStarted.pdf" format="html" scope="external"
+            >Miramo</xref>, again a commercial solution which recently started developing support
+          for DITA using a DITA OT plugin. Possibly user based DITA to PDF publishing will be free
+          and server based production will require buying a license. Like TopLeaf, it also has a
+          visual PDF layout designer.</li>
+        <li>Adobe FrameMaker can also publish to PDF using its own solution.</li>
+      </ul></p>
+    <p>Now the question would be, why there are so many solutions available? In my opinion all these
+      solutions are available because the default DITA to PDF output still requires quite a lot of
+      XSLT skills in order to customize. </p>
+    <p>What do you think?</p>
+  </body>
+</topic>

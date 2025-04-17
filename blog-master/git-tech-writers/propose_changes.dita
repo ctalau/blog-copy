@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="useful_features">
+	<title>Propose Changes</title>
+	<prolog>
+		<author>Radu Coravu</author>
+	</prolog>
+	<body>
+		<p>Besides the team of technical writers who have full write access to the documentation
+			repositories, there may be other collaborators (e.g. subject matter experts) who have
+			read access to the repository and sometimes want to propose changes.</p>
+		<p>The workflow for proposing changes to a repository usually works like this:<ol
+				id="ol_jl2_k2w_v2c">
+				<li><b>Identify the Need for a Change</b><p>The SME (subject matter expert) starts
+						by reading the published output and thinking about what to change</p></li>
+				<li><b>Click “Edit Online”</b><p>They click on an "Edit online" link on the page
+						they want to change</p></li>
+			<li><b>Make the Edits</b><p>Using the <xref
+							href="https://www.oxygenxml.com/xml_web_author.html" format="html"
+							scope="external">Oxygen XML Web Author</xref> the SME can make changes
+						directly to the DITA topic—no need to download or clone the
+					repository.</p></li>
+		<li><b>Submit the Changes</b><p>When they try to commit, Web Author automatically
+						creates a pull request with their changes</p></li>
+		<li><b>Review and Merge</b><p>The technical writer reviews the change, improve the
+						content if needed, and merges the pull request.</p></li>
+			</ol></p>
+		<p>You can see this workflow presented in detail in the video below. Short on time? Jump straight
+			to the <xref href="https://www.youtube.com/watch?v=YzQ0XhmtPUI&amp;t=217s" format="html"
+				scope="external">demo section</xref> and see it in action. </p>
+	<p><object width="560" height="315"
+      data="https://www.youtube.com/embed/YzQ0XhmtPUI" outputclass="iframe">
+<param name="allowfullscreen" />
+</object></p>
+	</body>
+	<related-links>
+		<link
+			href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
+			format="html" scope="external">
+			<linktext>Pull Requests</linktext>
+		</link>
+	</related-links>
+</topic>

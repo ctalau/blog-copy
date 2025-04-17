@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="reuse_tipcs">
+  <title>Content Reuse Tips and Tricks</title><prolog><author>Radu Coravu</author></prolog>
+  <body>
+    <p>I tried to compile below a set of best practices to follow when reusing content:</p>
+    <p>
+      <image
+        href="images/image10.png"
+        height="50" id="image_jzc_fnz_15"/>
+      <ul id="ul_sv4_gnz_15">
+        <li>Keep all your reused content in special topics located in special folders. Technical
+          writers need to know that they are editing content which potentially is used in multiple
+          contexts.</li>
+        <li>Keep a description for each reused element. You can have topics which act like
+          dictionaries of reused content. A table of reused content can have two columns. On the
+          first column each cell contains the reused element and on the second one you can have a
+          small description for each reused element. The description acts as metadata, it may give
+          the technical writer more details about how that content should be reused.</li>
+        <li> Use <b>conkeyrefs</b> instead of <b>conrefs</b>. Because relative referenced paths used
+          in conrefs always break when you move topics around. But more about conkeyrefs in the next
+          section.</li>
+        <li>When using conkeyrefs you should create a special map with key definitions. This keeps
+          the reused content and the keys for it separate from the live content.</li>
+      </ul></p>
+  </body>
+</topic>
