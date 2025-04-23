@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <circle id="myCircle" cx="100" cy="100" r="50" fill="red" stroke="black" stroke-width="3"/>
+  
+  <script type="application/ecmascript"><![CDATA[
+    const circle = document.getElementById('myCircle');
+    circle.addEventListener('click', function () {
+      const currentColor = circle.getAttribute('fill');
+      const newColor = currentColor === 'red' ? 'blue' : 'red';
+      circle.setAttribute('fill', newColor);
+    });
+  ]]></script>
+</svg>

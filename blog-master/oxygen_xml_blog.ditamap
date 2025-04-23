@@ -32,6 +32,7 @@
         <topicref href="topics/OxygenUsersMeetup.dita"/>
         <topicref href="topics/oxygen_xml_ecosystem.dita"/>
         <topicref href="topics/add_ons_for_technical_documentation.dita"/>
+        <topicref href="../topics/craiova.dita"/>
         <topicref href="topics/general_tips_and_tricks.dita"/>
         <topicref href="topics/checking_terminology_with_oxygen_xml_editor.dita"/>
         <topicref href="topics/10_things_i_enjoy_about_the_new_oxygen_json_editor.dita"/>

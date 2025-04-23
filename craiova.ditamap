@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map>
+    <title>Craiova DITA Map</title>
+    <topicref href="topics/craiova.dita">
+        <topicref href="topics/etymology_and_names.dita"/>
+        <topicref href="topics/history.dita"/>
+        <topicref href="topics/geography.dita"/>
+    </topicref>
+</map>
