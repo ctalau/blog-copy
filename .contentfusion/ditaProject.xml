@@ -3,6 +3,15 @@
     <context id="kMCxJFRTdcijffh" name="Craiova">
         <input href="../craiova.ditamap"/>
     </context>
+    <publication id="webhelp" transtype="webhelp-responsive"/>
+    <deliverable id="d-Craiova-1745420930406" name="Craiova">
+        <context idref="kMCxJFRTdcijffh"/>
+        <output href="webhelp-output"/>
+        <publication idref="webhelp">
+            <param href="cf://templates/Oxygen" name="webhelp.publishing.template"/>
+            <param name="editlink.enable.edit.in.content.fusion.workspace" value="false"/>
+        </publication>
+    </deliverable>
     <include href="blog%20project.xml"/>
     <include href="blog%20project.xml"/>
 </project>
